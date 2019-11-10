@@ -13,10 +13,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{E16210BB-15EE-2A8B-07E9-F1CA06A39C3C}</ProjectGuid>
+    <ProjectGuid>{E5F20DA9-51E5-2D01-A6DD-6A2EDEFD25EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -57,12 +57,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FreeDraw\Scripts\Drawable.cs" />
-    <Compile Include="Assets\FreeDraw\Scripts\DrawingSettings.cs" />
-    <Compile Include="Assets\Scripts\DrawingPart\TextureInic.cs" />
-    <Compile Include="Assets\Scripts\MainScript.cs" />
-    <Compile Include="Assets\Scripts\ScreenShotPart\ScreenShotCapture.cs" />
-    <Compile Include="Assets\Scripts\ScrrenshotCK.cs" />
+    <Compile Include="Assets\Plugins\ScreenshotCompanion\Framework\CameraObject.cs" />
+    <Compile Include="Assets\Plugins\ScreenshotCompanion\Framework\SettingsObject.cs" />
+    <Compile Include="Assets\Plugins\ScreenshotCompanion\ScreenshotCompanion.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>H:/UnityProjects/ScreenShots/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -621,12 +618,6 @@
     <Reference Include="Boo.Lang">
       <HintPath>H:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{E5F20DA9-51E5-2D01-A6DD-6A2EDEFD25EC}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
