@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using System.IO;
 namespace DefaultNamespace.ScreenShotPart
 {
@@ -8,15 +9,48 @@ namespace DefaultNamespace.ScreenShotPart
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                CaptureScreenshots();
+                StartCoroutine(CaptureScreenshots());
             }
         }
-        public void CaptureScreenshots()
+        IEnumerator CaptureScreenshots()
         {
+            yield return new WaitForEndOfFrame();
+            
+            
             Camera camera=Camera.main;
 
             string directoryName = checkSaveDirectory();
-            string fileName = directoryName + "CUSTOM.png";//getFileName(id);
+           // string fileName = directoryName + getFileName(id);
+           string fileName = directoryName + "CUSTOM.png";//getFileName(id);
+
+           
+           /*var startX = (int)(settings.cutoutPosition.x - settings.cutoutSize.x / 2f);
+           var startY = (int)((Screen.height - settings.cutoutPosition.y) - settings.cutoutSize.y / 2f);
+           var width = (int)settings.cutoutSize.x;
+           var height = (int)settings.cutoutSize.y;*/
+            var startX = (int)(0);
+            var startY = (int)(0);
+            var width = (int) (1023);
+            var height = (int)(385);
+            var tex = new Texture2D(width, height, TextureFormat.RGB24, false);
+
+            tex.ReadPixels(new Rect(startX, startY, width, height), 0, 0);
+            tex.Apply();
+
+            var bytes = tex.EncodeToPNG();
+            Destroy(tex);
+
+            File.WriteAllBytes(fileName, bytes);
+            
+            
+            
+            
+            
+            
+            
+            
+           // string directoryName = checkSaveDirectory();
+            
 
             ScreenCapture.CaptureScreenshot(fileName, 1);
             
