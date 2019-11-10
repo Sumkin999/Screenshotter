@@ -19,7 +19,7 @@ namespace DefaultNamespace.ScreenShotPart
             
             Camera camera=Camera.main;
 
-            string directoryName = checkSaveDirectory();
+            string directoryName = "H:\\UnityProjects\\ScreenShots\\Screenshots\\";//checkSaveDirectory();
            // string fileName = directoryName + getFileName(id);
            string fileName = directoryName + "CUSTOM.png";//getFileName(id);
 
@@ -30,8 +30,8 @@ namespace DefaultNamespace.ScreenShotPart
            var height = (int)settings.cutoutSize.y;*/
             var startX = (int)(0);
             var startY = (int)(0);
-            var width = (int) (1023);
-            var height = (int)(385);
+            var width = (int) (Screen.width);
+            var height = (int)(Screen.height);
             var tex = new Texture2D(width, height, TextureFormat.RGB24, false);
 
             tex.ReadPixels(new Rect(startX, startY, width, height), 0, 0);
