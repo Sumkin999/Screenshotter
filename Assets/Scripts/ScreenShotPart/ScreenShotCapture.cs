@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.IO;
 using DefaultNamespace.DrawingPart;
+using UnityEngine.UI;
 
 namespace DefaultNamespace.ScreenShotPart
 {
@@ -12,18 +13,20 @@ namespace DefaultNamespace.ScreenShotPart
         
         public SpriteRenderer DrawingSpriteRenderer;
 
-
+        public Image ImageToCopy;
+        public Sprite drawingSprite;
         public void Capture()
         {
             StartCoroutine(CaptureScreenshots());
         }
-        /*public void Update()
+        public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            
+            /*if (Input.GetKeyDown(KeyCode.A))
             {
                 StartCoroutine(CaptureScreenshots());
-            }
-        }*/
+            }*/
+        }
         IEnumerator CaptureScreenshots()
         {
             yield return new WaitForEndOfFrame();
@@ -73,17 +76,17 @@ namespace DefaultNamespace.ScreenShotPart
 
             Sprite sp=LoadNewSprite(fileName);
             TextureInic.ImageScreenshot.sprite = sp;
-            
-            
-           /* Texture2D t= new Texture2D(width, height, TextureFormat.RGBA32, false);
-            t.ReadPixels(new Rect(startX, startY, width, height), 0, 0);
-            t.Apply();
-            var bytes2 = tex.EncodeToPNG();
-            //Destroy(tex);
-            fileName += "temp";
-            File.WriteAllBytes(fileName, bytes2);
-            Sprite sp2=LoadNewSprite(fileName);
-           DrawingSpriteRenderer.sprite = sp2;*/
+
+            ImageToCopy.sprite = drawingSprite;
+            /* Texture2D t= new Texture2D(width, height, TextureFormat.RGBA32, false);
+             t.ReadPixels(new Rect(startX, startY, width, height), 0, 0);
+             t.Apply();
+             var bytes2 = tex.EncodeToPNG();
+             //Destroy(tex);
+             fileName += "temp";
+             File.WriteAllBytes(fileName, bytes2);
+             Sprite sp2=LoadNewSprite(fileName);
+            DrawingSpriteRenderer.sprite = sp2;*/
             //postCapture();
         }
         

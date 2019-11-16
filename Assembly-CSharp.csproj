@@ -59,8 +59,15 @@
   <ItemGroup>
     <Compile Include="Assets\FreeDraw\Scripts\Drawable.cs" />
     <Compile Include="Assets\FreeDraw\Scripts\DrawingSettings.cs" />
+    <Compile Include="Assets\Scripts\DrawingPart\BoundsColliderGet.cs" />
+    <Compile Include="Assets\Scripts\DrawingPart\DrawingCollider.cs" />
     <Compile Include="Assets\Scripts\DrawingPart\TextureInic.cs" />
+    <Compile Include="Assets\Scripts\GLpart\GLexample.cs" />
     <Compile Include="Assets\Scripts\MainScript.cs" />
+    <Compile Include="Assets\Scripts\PathfinderPart\ObjectClicker.cs" />
+    <Compile Include="Assets\Scripts\PathfinderPart\PfInterface.cs" />
+    <Compile Include="Assets\Scripts\ScreenshotControlPart\CanvasController.cs" />
+    <Compile Include="Assets\Scripts\ScreenshotControlPart\ScrStarterScene.cs" />
     <Compile Include="Assets\Scripts\ScreenShotPart\ScreenShotCapture.cs" />
     <Compile Include="Assets\Scripts\ScrrenshotCK.cs" />
     <Reference Include="Unity.Timeline.Editor">

@@ -55,11 +55,11 @@ namespace DefaultNamespace.ScreenshotControlPart
             Camera tempmaincamera=Camera.main;
             SceneCamera.gameObject.SetActive(true);
 
-           /* if (Camera.current!=SceneCamera)
+            if (Camera.current!=SceneCamera)
             {
                 Debug.Log("Need Change Camera!");
                 tempmaincamera.gameObject.SetActive(false);
-            }*/
+            }
         }
     }
 }
