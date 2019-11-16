@@ -1,16 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using DefaultNamespace.ScreenShotPart;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace DefaultNamespace.DrawingPart
 {
     public class TextureInic:MonoBehaviour
     {
-        public Texture aTexture;
-        void OnGUI()
+        public Image ImageScreenshot;
+
+        public void Start()
         {
-            if (Event.current.type.Equals(EventType.Repaint))
-            {
-                Graphics.DrawTexture(new Rect(500, 200, 100, 100), aTexture);
-            }
+            if(GameObject.Find("PathfinderSphere"))
+                Debug.Log("PF FINDED!");
         }
+
+
     }
 }
