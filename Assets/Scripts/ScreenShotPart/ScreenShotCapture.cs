@@ -10,15 +10,20 @@ namespace DefaultNamespace.ScreenShotPart
 
         public TextureInic TextureInic;
         
-        
-        
-        public void Update()
+        public SpriteRenderer DrawingSpriteRenderer;
+
+
+        public void Capture()
+        {
+            StartCoroutine(CaptureScreenshots());
+        }
+        /*public void Update()
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
                 StartCoroutine(CaptureScreenshots());
             }
-        }
+        }*/
         IEnumerator CaptureScreenshots()
         {
             yield return new WaitForEndOfFrame();
@@ -66,7 +71,19 @@ namespace DefaultNamespace.ScreenShotPart
             
             Debug.Log("Screenshot saved to: " + fileName);
 
-            TextureInic.ImageScreenshot.sprite = LoadNewSprite(fileName);
+            Sprite sp=LoadNewSprite(fileName);
+            TextureInic.ImageScreenshot.sprite = sp;
+            
+            
+           /* Texture2D t= new Texture2D(width, height, TextureFormat.RGBA32, false);
+            t.ReadPixels(new Rect(startX, startY, width, height), 0, 0);
+            t.Apply();
+            var bytes2 = tex.EncodeToPNG();
+            //Destroy(tex);
+            fileName += "temp";
+            File.WriteAllBytes(fileName, bytes2);
+            Sprite sp2=LoadNewSprite(fileName);
+           DrawingSpriteRenderer.sprite = sp2;*/
             //postCapture();
         }
         

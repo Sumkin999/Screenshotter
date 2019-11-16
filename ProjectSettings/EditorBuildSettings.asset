@@ -8,7 +8,22 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene_2.unity
     guid: 77f6651ee3a99284898c6e7e283162fb
+  - enabled: 0
+    path: Assets/Scenes/SampleScene_TEST_MAIN.unity
+    guid: 79056cb87c26d3e4ca06fa9dafef70c2
+  - enabled: 0
+    path: Assets/FreeDraw/ExampleDrawingScene_2.unity
+    guid: 0e69a61e8a8dada4f9244faa4a988673
+  - enabled: 1
+    path: Assets/Scenes/Pathfinder.unity
+    guid: aa1dc46fecd19414c95a58f232c3a336
+  - enabled: 1
+    path: Assets/Scenes/Pathfinder_Interface.unity
+    guid: a1a90e73ca3a7fd499ec22a70a96a36b
+  - enabled: 1
+    path: Assets/Scenes/GLscene.unity
+    guid: 9eb5a81588e739e4b9df233c00d4ab1c
   m_configObjects: {}

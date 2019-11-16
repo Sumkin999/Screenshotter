@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 628430061}
   - component: {fileID: 628430060}
   - component: {fileID: 628430059}
+  - component: {fileID: 628430062}
   m_Layer: 0
   m_Name: SCRENSHOTTER (1)
   m_TagString: Untagged
@@ -338,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextureInic: {fileID: 628430059}
+  DrawingSpriteRenderer: {fileID: 1492302195}
 --- !u!4 &628430061
 Transform:
   m_ObjectHideFlags: 0
@@ -352,6 +354,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &628430062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628430058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd1cc328fcb4934817c047911738e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScreenShotCapture: {fileID: 628430060}
+  MainCanvas: {fileID: 818835308}
+  SceneCamera: {fileID: 79766702}
 --- !u!1 &773846359
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &818835306
 MonoBehaviour:
   m_ObjectHideFlags: 0
