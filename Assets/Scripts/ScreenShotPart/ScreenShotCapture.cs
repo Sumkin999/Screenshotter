@@ -78,6 +78,8 @@ namespace DefaultNamespace.ScreenShotPart
             TextureInic.ImageScreenshot.sprite = sp;
 
             ImageToCopy.sprite = drawingSprite;
+
+            bot = tex;
             /* Texture2D t= new Texture2D(width, height, TextureFormat.RGBA32, false);
              t.ReadPixels(new Rect(startX, startY, width, height), 0, 0);
              t.Apply();
@@ -141,5 +143,109 @@ namespace DefaultNamespace.ScreenShotPart
  
             return NewSprite;
         }
+
+
+        private Texture2D bot;
+        private Texture2D upt;
+        
+        public static Texture2D AlphaBlend( Texture2D aBottom, Texture2D aTop)
+        {
+           // aTop.Resize(aBottom.width, aBottom.height);
+          // string path = "H:\\UnityProjects\\ScreenShots\\Assets\\FreeDraw\\Art\\ReadWriteEnabledImage.png";
+         //  Texture2D tmp = LoadTexture(path);
+               //Graphics.CopyTexture(aTop,)
+            scale(aBottom,aTop.width,aTop.height);
+            
+            
+            if (aBottom.width != aTop.width || aBottom.height != aTop.height)
+                throw new System.InvalidOperationException("AlphaBlend only works with two equal sized images");
+            var bData = aBottom.GetPixels();
+            var tData = aTop.GetPixels();
+            int count = bData.Length;
+            var rData = new Color[count];
+            for(int i = 0; i < count; i++)
+            {
+                Color B = bData[i];
+                Color T = tData[i];
+                float srcF = T.a;
+                float destF = 1f - T.a;
+                float alpha = srcF + destF * B.a;
+                Color R = (T * srcF + B * B.a * destF)/alpha;
+                R.a = alpha;
+                rData[i] = R;
+            }
+            var res = new Texture2D(aTop.width, aTop.height);
+            res.SetPixels(rData);
+            res.Apply();
+            return res;
+        }
+
+        public void MixTextures()
+        {
+            upt = drawingSprite.texture;
+
+            Texture2D mixed = AlphaBlend(bot, upt);
+            
+            var bytes = mixed.EncodeToPNG();
+            //Destroy(tex);
+
+            string directoryName = "H:\\UnityProjects\\ScreenShots\\Screenshots\\Mixed.png";
+            File.WriteAllBytes(directoryName, bytes);
+        }
+        
+        
+        
+        
+        
+        
+        public static Texture2D scaled(Texture2D src, int width, int height, FilterMode mode = FilterMode.Trilinear)
+        {
+            Rect texR = new Rect(0,0,width,height);
+            _gpu_scale(src,width,height,mode);
+               
+            //Get rendered data back to a new texture
+            Texture2D result = new Texture2D(width, height, TextureFormat.ARGB32, true);
+            result.Resize(width, height);
+            result.ReadPixels(texR,0,0,true);
+            return result;                 
+        }
+        public static void scale(Texture2D tex, int width, int height, FilterMode mode = FilterMode.Trilinear)
+        {
+            Rect texR = new Rect(0,0,width,height);
+            _gpu_scale(tex,width,height,mode);
+               
+            // Update new texture
+            tex.Resize(width, height);
+            tex.ReadPixels(texR,0,0,true);
+            tex.Apply(true);        //Remove this if you hate us applying textures for you :)
+        }
+        
+        static void _gpu_scale(Texture2D src, int width, int height, FilterMode fmode)
+        {
+            //We need the source texture in VRAM because we render with it
+            src.filterMode = fmode;
+            src.Apply(true);       
+                               
+            //Using RTT for best quality and performance. Thanks, Unity 5
+            RenderTexture rtt = new RenderTexture(width, height, 32);
+               
+            //Set the RTT in order to render to it
+            Graphics.SetRenderTarget(rtt);
+               
+            //Setup 2D matrix in range 0..1, so nobody needs to care about sized
+            GL.LoadPixelMatrix(0,1,1,0);
+               
+            //Then clear & draw the texture to fill the entire RTT.
+            GL.Clear(true,true,new Color(0,0,0,0));
+            Graphics.DrawTexture(new Rect(0,0,1,1),src);
+        }
+        
+        
+        
+        
+        
     }
+    
+    
+    
 }

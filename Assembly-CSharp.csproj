@@ -59,8 +59,10 @@
   <ItemGroup>
     <Compile Include="Assets\FreeDraw\Scripts\Drawable.cs" />
     <Compile Include="Assets\FreeDraw\Scripts\DrawingSettings.cs" />
+    <Compile Include="Assets\Screenshoter\Scripts\CaptureScreenshot.cs" />
     <Compile Include="Assets\Scripts\DrawingPart\BoundsColliderGet.cs" />
     <Compile Include="Assets\Scripts\DrawingPart\DrawingCollider.cs" />
+    <Compile Include="Assets\Scripts\DrawingPart\Paintable.cs" />
     <Compile Include="Assets\Scripts\DrawingPart\TextureInic.cs" />
     <Compile Include="Assets\Scripts\GLpart\GLexample.cs" />
     <Compile Include="Assets\Scripts\MainScript.cs" />
