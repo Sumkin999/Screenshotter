@@ -17,14 +17,27 @@ namespace DefaultNamespace.ScreenshotControlPart
         List<Canvas>otherCanvases=new List<Canvas>();
 
 
-        
+        private float timer = -0.25f;
+        private bool toChange = false;
         public void Update()
         {
+            timer -= Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.A))
             {
+                //PrepareCamera();
+                //SetCanvasDepth();
+                ScreenShotCapture.Capture();
+
+
+                timer = .25f;
+                toChange = true;
+            }
+
+            if (timer < 0 && toChange)
+            {
+                toChange = false;
                 PrepareCamera();
                 SetCanvasDepth();
-                ScreenShotCapture.Capture();
             }
         }
         
@@ -50,16 +63,27 @@ namespace DefaultNamespace.ScreenshotControlPart
 
 
 
+        private bool isCameraPerspective = false;
         public void PrepareCamera()
         {
-            Camera tempmaincamera=Camera.main;
+            Camera curCamera=Camera.main;
+            if (curCamera==null)
+            {
+                return;
+            }
+            if (!curCamera.orthographic)
+            {
+                isCameraPerspective = true;
+                curCamera.orthographic = true;
+            }
+            /*Camera tempmaincamera=Camera.main;
             SceneCamera.gameObject.SetActive(true);
 
             if (Camera.current!=SceneCamera)
             {
                 Debug.Log("Need Change Camera!");
                 tempmaincamera.gameObject.SetActive(false);
-            }
+            }*/
         }
     }
 }
